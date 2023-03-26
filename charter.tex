@@ -7,7 +7,7 @@ codirector, % Uncomment to add a codirector to the title page
 
 
 % El títulos de la memoria, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \ttitle
-\titulo{Red de sensores para monitoreo ambiental en laboratorios críticos con ESP32} 
+\titulo{Red de sensores para monitoreo ambiental en laboratorios críticos} 
 
 % Nombre del posgrado, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \degreename
 %\posgrado{Carrera de Especialización en Sistemas Embebidos} 
@@ -17,17 +17,17 @@ codirector, % Uncomment to add a codirector to the title page
 %\posgrado{Maestría en Internet de las cosas}
 
 % Tu nombre, se puede usar el cualquier lugar del documento con el comando \authorname
-\autor{Christian Canaan Castro Botek} 
+\autor{Ing. Christian Canaan Castro Botek} 
 
 % El nombre del director y co-director, se puede usar el cualquier lugar del documento con el comando \supname y \cosupname y \pertesupname y \pertecosupname
 %\director{Nombre del Director}
-\pertenenciaDirector{pertenencia} 
+\pertenenciaDirector{Esp. Ing. Pedro Rosito} 
 % FIXME:NO IMPLEMENTADO EL CODIRECTOR ni su pertenencia
 %\codirector{John Doe} % para que aparezca en la portada se debe descomentar la opción codirector en el documentclass
 \pertenenciaCoDirector{FIUBA}
 
 % Nombre del cliente, quien va a aprobar los resultados del proyecto, se puede usar con el comando \clientename y \empclientename
-\cliente{Guillermo Kirsch}
+\cliente{Ing. Guillermo Kirsch}
 \empresaCliente{FLEXAR S.R.L.}
 
 % Nombre y pertenencia de los jurados, se pueden usar el cualquier lugar del documento con el comando \jurunoname, \jurdosname y \jurtresname y \perteunoname, \pertedosname y \pertetresname.
@@ -68,14 +68,9 @@ codirector, % Uncomment to add a codirector to the title page
 \hline
 \rowcolor[HTML]{C0C0C0} 
 Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios realizados} & Fecha      \\ \hline
-0      & Creación del documento                                 &\fechaInicioName \\ \hline
-%1      & Se completa hasta el punto 4 inclusive                 & dd/mm/aaaa \\ \hline
-%2      & Se completa hasta el punto 7 inclusive
-%		  Se puede agregar algo más \newline
-%		  En distintas líneas \newline
-%		  Así                                                    & dd/mm/aaaa \\ \hline
-%3      & Se completa hasta el punto 11 inclusive                & dd/mm/aaaa \\ \hline
-%4      & Se completa el plan	                                 & dd/mm/aaaa \\ \hline
+1      & Creación del documento                                 &\fechaInicioName \\ \hline
+2      & Se aplicaron correcciones y se completa hasta el punto 9 inclusive. & 21 de marzo de 2023 \\ \hline
+3      & Se aplicaron correcciones y se completa hasta el punto 12 inclusive. & 26 de marzo de 2023 \\ \hline
 \end{tabularx}
 \end{table}
 
@@ -92,7 +87,7 @@ Buenos Aires, \fechaInicioName
 
 \vspace{2cm}
 
-Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en \textcolor{red}{la implementación de un prototipo de un sistema de monitoreo ambiental para laboratorios críticos con ESP32}, y tendrá un presupuesto preliminar estimado de \textcolor{red}{600} h de trabajo y \textcolor{red}{\$XXX}, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
+Por medio de la presente se acuerda con el \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en la implementación de un prototipo de un sistema de monitoreo ambiental para laboratorios críticos, y tendrá un presupuesto preliminar estimado de 600 h de trabajo y \textcolor{red}{\$XXX}, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
 
 Se adjunta a esta acta la planificación inicial.
 
@@ -115,9 +110,9 @@ Se adjunta a esta acta la planificación inicial.
 \section{1. Descripción técnica-conceptual del proyecto a realizar}
 \label{sec:descripcion}
 
-En FLEXAR S.R.L. se fabrican celdas de carga (Figura 1) para todo tipo de aplicaciones tales como pesaje de vehículos, pesajes de movimiento, balanzas de piso, tanques, tolvas, etc. El proceso productivo de las celdas precisan el monitoreo y cuidado de 4 plantas separadas pero próximas entre si, todas ubicadas en la zona urbano-industrial de la localidad de San Martín, Buenos Aires, Argentina. En tres de las planta, se realizan diversas tareas que pretenden cierto grado de exigencia y calidad que puede verse afectadas ante cualquier perturbación externa o factor medio ambiental. Estos procesos son tan críticos que de no cumplir con los estándares internacionales, nacionales y empresariales conllevan a grandes perdidas para la empresa, tanto económicas como de confianza mercantil. 
+En FLEXAR S.R.L. se fabrican celdas de carga (figura 1) para todo tipo de aplicaciones tales como pesaje de vehículos, pesajes de movimiento, balanzas de piso, tanques, tolvas, etc. El proceso productivo de las celdas precisan el monitoreo y cuidado de cuatro plantas separadas pero próximas entre sí, todas ubicadas en la zona urbano-industrial de la localidad de San Martín, Buenos Aires, Argentina. En tres de las planta, se realizan diversas tareas que pretenden cierto grado de exigencia y calidad que pueden verse afectadas ante cualquier perturbación externa o factor medio ambiental. Estos procesos son tan críticos que de no cumplir con los estándares internacionales, nacionales y empresariales conllevan a grandes perdidas para la empresa, tanto económicas como de confianza mercantil. 
 
-Es por ello que bajo este contexto se busca implementar un sistema automático, de bajo costo y mantenimiento que permita implementar una red de sensores para el monitoreo y control ambiental de dichos laboratorios, para que la empresa pueda garantizar los estándares estipulados para sus productos. Como requisito primario, la red de sensores debe estar basada en la familia de chips SoC de bajo coste y consumo de energía ESP32, sensores DHT22, alimentación provista por la red, conectividad Wi-Fi y una web de tipo SPA desarrollada con el framework de VueJS para la visualización y monitoreo de las variables de interés. En la figura 2 se puede observar la composición básica del sistema.
+Es por ello que bajo este contexto se busca implementar un sistema automático, de bajo costo y mantenimiento que permita implementar una red de sensores para el monitoreo y control ambiental de dichos laboratorios. Como requisito primario, la red de sensores debe estar basada en la familia de chips SoC (System-on-a-Chip) de bajo coste y consumo de energía ESP32, sensores DHT22, alimentación provista por la red, conectividad Wi-Fi y una web de tipo SPA desarrollada con el framework de VueJS para la visualización y monitoreo de las variables de interés. En la figura 2 se puede observar la composición básica del sistema.
 
 \begin{figure}[h!]
 \centering 
@@ -136,7 +131,11 @@ Es por ello que bajo este contexto se busca implementar un sistema automático, 
 \section{2. Identificación y análisis de los interesados}
 \label{sec:interesados}
 
-\begin{table}[ht]
+Cliente: Ing. Guillermo Kirsch tiene amplios y diversos conocimientos técnicos y es un gran guía para la elaboración del proyecto pero no dispone de mucho tiempo por tener una gran responsabilidad laboral en otras áreas de la empresa. Sin embargo, estará presente en gran parte del desarrollo, testeo y puesta en marcha de este proyecto. 
+
+Colaborador: Ing. Luciano Rossi es el responsable de guiar supervisar y guiar al equipo de desarrollo de software de la empresa, estará presente en gran parte del desarrollo y testeo de este proyecto.
+
+\begin{table}[h]
 %\caption{Identificación de los interesados}
 %\label{tab:interesados}
 \begin{tabularx}{\linewidth}{@{}|l|X|X|l|@{}}
@@ -144,29 +143,46 @@ Es por ello que bajo este contexto se busca implementar un sistema automático, 
 \rowcolor[HTML]{C0C0C0} 
 Rol           & Nombre y Apellido & Organización 	& Puesto 	\\ \hline
 %Auspiciante   &                   &              	&        	\\ \hline
-Cliente       & \clientename      &\empclientename	& Gerente de Ingenieria       	\\ \hline
+Cliente       & \clientename      &\empclientename	& Gerente de Ingeniería       	\\ \hline
 %Impulsor      &                   &              	&        	\\ \hline
 Responsable   & \authorname       & FIUBA        	& Alumno 	\\ \hline
-Colaboradores &                 &            	&        	\\ \hline
-Orientador    & \supname	      & \pertesupname 	& Director	Trabajo final \\ \hline
+Colaboradores & Luciano Rossi                & FLEXAR S.R.L           	& Desarrollo de software       	\\ \hline
+Orientador    & \pertesupname	      & FIUBA 	& Director	Trabajo final \\ \hline
 %Equipo        & miembro1 \newline 
 %				miembro2          &              	&        	\\ \hline
 %Opositores    &                   &              	&        	\\ \hline
-Usuario final & -                  & FLEXAR S.R.L             	&  -      	\\ \hline
+Usuario final & \clientename                 & FLEXAR S.R.L             	&  Gerente de Ingeniería      	\\ \hline
 \end{tabularx}
 \end{table}
-
-El Ing. Guillermo Kirsch tiene muchos conocimientos técnicos y es un gran guía para la elaboración del proyecto pero no dispone de mucho tiempo por tener una gran responsabilidad laboral. 
 
 \section{3. Propósito del proyecto}
 \label{sec:proposito}
 
-El propósito de este proyecto es poder diseñar e implementar el prototipo de una red de sensores basada en ESP32 para el monitoreo y control de variables de temperatura y humedad sobre los distintos laboratorios de tareas críticas de la empresa FLEXAR S.R.L.
+El propósito de este proyecto es poder diseñar e implementar el prototipo de una red de sensores para el monitoreo y control de variables de temperatura y humedad sobre los distintos laboratorios de tareas críticas de la empresa FLEXAR S.R.L. lo que permitirá adjuntar a las especificaciones de cada celda información adicional respecto a las condiciones ambientales a las que se encontraron expuestas durante el proceso productivo. Adicionalmente, también facilitará detectar causas de fallas en lotes de producción.
 
 \section{4. Alcance del proyecto}
 \label{sec:alcance}
 
 El presente proyecto incluye la elaboración del prototipo de red basada en ESP32 que reporte, almacene y permita la visualización a través de una web las variables medidas para cada laboratorio de interés.
+
+Se incluye:
+\begin{itemize}
+\item El armado de al menos dos prototipos de nodos de medición con ESP32.
+\item Elaboración de la red de comunicación de estos dispositivos con la base de datos de la empresa.
+\item Implementación de una estrategia de comunicación de datos segura.
+\item Desarrollo de un front-end.
+\item Muestra y visualización de los datos en tiempo real.
+\item Documentación sobre el proyecto.
+\end{itemize}
+
+No se incluye:
+\begin{itemize}
+\item Análisis de trafico de datos.
+\item Implementación de testing sobre el software desarrollado.
+\item Implementación de una estrategia de comunicación de datos segura.
+\item Visualización estadística de los datos.
+\item Compatibilidad con dispositivos móviles.
+\end{itemize}
 
 
 \section{5. Supuestos del proyecto}
@@ -187,105 +203,166 @@ Para el cumplimiento de este proyecto se supone que:
 \section{6. Requerimientos}
 \label{sec:requerimientos}
 
-\begin{consigna}{red}
-Los requerimientos deben numerarse y de ser posible estar agruparlos por afinidad, por ejemplo:
+Los requerimientos del proyecto fueron convenidos por ambas partes a través del documento inicial de presentación del proyecto y distintas reuniones coordinadas. 
 
 \begin{enumerate}
-	\item Requerimientos funcionales
+	\item Requerimientos generales del proyecto:
+	\begin{enumerate}
+	\item Deadline 1 Diciembre 2023.
+	\item Entregable prototipo de hardware funcional y prototipo de aplicación con función de visualización de los datos en tiempo real de agrupados por sector.
+	\end{enumerate}
+\item Requerimientos físicos del sistema:
+	\begin{enumerate}
+	\item Prototipo del hardware basado en ESP32 y DHT22.
+	\item Alimentación desde la red.
+	\item Resistente a condiciones ambientales, con grado de protección IP60.
+	\end{enumerate}
+\item Requerimientos funcionales del sistema:
+	\begin{enumerate}
+	\item Hardware:
 		\begin{enumerate}
-			\item El sistema debe...
-			\item Tal componente debe...
-			\item El usuario debe poder...
+		\item Contará con pines de acceso para el cargado de firmware.
+		\item Envío de datos por MQTT.
+		\item No enfocarse en el consumo por estar conectado a la red.
+		\item Uso eficiente de la red de comunicación.
+		\item Baja tasa de transferencia de datos.
+		\item Bajo costo, siempre se busca ahorrar.
 		\end{enumerate}
-	\item Requerimientos de documentación
+	\item Software y aplicación:
 		\begin{enumerate}
-			\item Requerimiento 1
-			\item Requerimiento 2 (prioridad menor)
+		\item Almacenamiento de la información en base de datos postgressql.
+		\item Validación de usuario para el ingreso a la plataforma.
+		\item Capacidad de escalabilidad para registrar nuevos nodos de medición.
+		\item Grafica histórica de los niveles de temperatura y humedad.
+		\item Visualización de datos en tiempo real.
+		\item Bajo tráfico de datos.
+		\item Comunicación segura.
+		\item Sistema de alarma en caso de una medición fuera de rango aceptable.
 		\end{enumerate}
-	\item Requerimiento de testing...
-	\item Requerimientos de la interfaz...
-	\item Requerimientos interoperabilidad...
-	\item etc...
+	\end{enumerate}
+\item Requerimientos de documentación:
+	\begin{enumerate}
+	\item Elaboración de un informe de avance del proyecto.
+	\item Elaboración de informe de puesta en marcha.
+	\item Documentación general del desarrollo del software y estructura de la base de datos.
+	\item Memoria de trabajo final.
+	\end{enumerate}	
 \end{enumerate}
 
-Leyendo los requerimientos se debe poder interpretar cómo será el proyecto y su funcionalidad.
-
-Indicar claramente cuál es la prioridad entre los distintos requerimientos y si hay requerimientos opcionales. 
-
-No olvidarse de que los requerimientos incluyen a las regulaciones y normas vigentes!!!
-
-Y al escribirlos seguir las siguientes reglas:
-\begin{itemize}
-	\item Ser breve y conciso (nadie lee cosas largas). 
-	\item Ser específico: no dejar lugar a confusiones.
-	\item Expresar los requerimientos en términos que sean cuantificables y medibles.
-\end{itemize}
-
-\end{consigna}
 
 \section{7. Historias de usuarios (\textit{Product backlog})}
 \label{sec:backlog}
 
-\begin{consigna}{red}
-Descripción: En esta sección se deben incluir las historias de usuarios y su ponderación (\textit{history points}). Recordar que las historias de usuarios son descripciones cortas y simples de una característica contada desde la perspectiva de la persona que desea la nueva capacidad, generalmente un usuario o cliente del sistema. La ponderación es un número entero que representa el tamaño de la historia comparada con otras historias de similar tipo.
+Ponderación: según el esfuerzo que requiera el cumplimiento de la historia.
 
-El formato propuesto es: "como [rol] quiero [tal cosa] para [tal otra cosa]."
+Prioridad: de 1 al 10 considerando 10 como lo más importante.
 
-Se debe indicar explícitamente el criterio para calcular los \textit{story points} de cada historia
-\end{consigna}
+Se define como usuario aquel quien hace un uso general del sistema.
+
+Calificación: Ponderación - Prioridad.
+
+\begin{itemize}
+\item Como gerente de FLEXAR S.R.L. quiero una aplicación que me permita visualizar datos ambientales en tiempo real. \textit{10-10}
+\item Como gerente de FLEXAR S.R.L. quiero un dispositivo que permita visualizar datos historicos ambientales \textit{8-10}
+\item Como gerente de FLEXAR S.R.L. quiero que el dispositivo sea compatible con la infraestructura ya existente para mayor interoperabilidad y soporte. \textit{9-10}
+\item Como gerente de FLEXAR S.R.L. quiero que la información sea visible en una web responsiva para tener mayor portabilidad. \textit{10-10}
+\item Como gerente de FLEXAR S.R.L. quiero una interfaz gráfica para tener un login de usuario. \textit{7-10}
+\item Como usuario operario quiero una aplicación para que funcione en un smartphone. \textit{5-7}
+\item Como usuario operario quiero una aplicación de fácil acceso. \textit{7-7}
+\item Como gerente de FLEXAR S.R.L. quiero que el dispositivo funcione el mayor tiempo posible para facilitar la instalación y el mantenimiento. \textit{8-10}
+\item Como gerente de FLEXAR S.R.L. quiero un sistema escalable. \textit{10-10}
+\item Como gerente de FLEXAR S.R.L. quiero un dispositivo que sea de bajo consumo para facilitar su uso y mantenimiento. \textit{4-2}
+\item Como usuario operario quiero acceder a una web para ver los datos en tiempo real \textit{10-10}
+\item Como gerente de FLEXAR S.R.L. quiero un dispositivo que sea fácilmente desmontable y reemplazable para facilitar el mantenimiento e instalación \textit{8-9}
+\item Como gerente de FLEXAR S.R.L. quiero un sistema de baja tasa de transmisión de datos para no sobrecargar la red de comunicación. \textit{10-10}
+\item Como usuario operario quiero una interfaz sencilla y estilizada \textit{5-8}
+\item Como usuario operario quiero poder visualizar datos perteneciente a otros laboratorios. \textit{9-10}
+\item Como gerente de FLEXAR S.R.L. quiero una aplicación multi-plataforma para no limitar su uso a ciertos dispositivos. \textit{10-10}
+\item Como gerente de FLEXAR S.R.L. quiero un sistema de alarma en caso de que los datos indiquen estar fuera de un rango de medición aceptable. \textit{10-10}
+\item Como gerente de FLEXAR S.R.L. quiero poder identificar de qué laboratorio proviene el historial de datos. \textit{10-10} 
+\end{itemize}
 
 \section{8. Entregables principales del proyecto}
 \label{sec:entregables}
 
-\begin{consigna}{red}
-
-Los entregables del proyecto son (ejemplo):
+Los entregables del proyecto son:
 
 \begin{itemize}
-	\item Manual de uso
-	\item Diagrama de circuitos esquemáticos
-	\item Código fuente del firmware
-	\item Diagrama de instalación
-	\item Informe final
-	\item etc...
-\end{itemize}
+\item Planificación del trabajo final.
+\item Prototipo funcional del hardware y software de aplicación.
+\item Código fuente.
+\item Diagrama esquemático o en bloques del hardware.
+\item Diagrama estructura base de datos.
+\item Descripción y documentación sobre modo de uso.
+\item Memoria final e informe de avance.
 
-\end{consigna}
+\end{itemize}
 
 \section{9. Desglose del trabajo en tareas}
 \label{sec:wbs}
 
-\begin{consigna}{red}
-El WBS debe tener relación directa o indirecta con los requerimientos.  Son todas las actividades que se harán en el proyecto para dar cumplimiento a los requerimientos. Se recomienda mostrar el WBS mediante una lista indexada:
-
 \begin{enumerate}
-\item Grupo de tareas 1
+\item Análisis inicial (110)
 	\begin{enumerate}
-	\item Tarea 1 (tantas h)
-	\item Tarea 2 (tantas hs)
-	\item Tarea 3 (tantas h)
+	\item Lectura de referencias bibliográficas. (40)
+	\item Análisis de las herramientas trabajo. (30)
+	\item Elaboración de la planificación del proyecto. (40)
 	\end{enumerate}
-\item Grupo de tareas 2
+\item Diseño de Hardware (105)
 	\begin{enumerate}
-	\item Tarea 1 (tantas h)
-	\item Tarea 2 (tantas h)
-	\item Tarea 3 (tantas h)
+	\item Diseño estructura del sistema. (40)
+	\item Diseño preliminar del sistema. (15)
+	\item Selección de componentes. (15)
+	\item Elaboración del circuito esquemático. (15)
+	\item Dimensionado del prototipo físico. (20)
 	\end{enumerate}
-\item Grupo de tareas 3
+\item Desarrollo de Firmware (155)
 	\begin{enumerate}
-	\item Tarea 1 (tantas h)
-	\item Tarea 2 (tantas h)
-	\item Tarea 3 (tantas h)
-	\item Tarea 4 (tantas h)
-	\item Tarea 5 (tantas h)
+	\item Configuración de entorno de diseño. (15)
+	\item Diseño de la estructura del firmware. (15)
+	\item Selección de interfaz de comunicación. (15)
+	\item Implementación de adquisición de datos. (40)
+	\item Trama de comunicación. (40)
+	\item Configuración de la estrategia de control del sistema. (30)
+	\end{enumerate}
+\item Producción (60)
+	\begin{enumerate}
+	\item Montaje de componentes. (40)
+	\item Montaje final del prototipo. (20)
+	\end{enumerate}
+\item Testing (35)
+	\begin{enumerate}
+	\item Comprobación de funcionamiento del circuito. (10)
+	\item Ensayo de comunicación por MQTT. (15)
+	\item Checkeo de la correcta llegada de datos a la base de datos. (10)
+	\end{enumerate}
+\item Aplicación (160)
+	\begin{enumerate}
+	\item Selección de estrategia y entorno de programación. (20)
+	\item Desarrollo del login de usuario. (20)
+	\item Comprobación de comunicación y login correctos. (10)
+    \item Desarrollo de interfaz de monitoreo. (40)
+    \item Desarrollo de interfaz de gestión. (40)
+	\item Desarrollo de algoritmos de históricos. (30)
+	\end{enumerate}
+\item Ensayos sobre aplicación (20)
+	\begin{enumerate}
+	\item Pruebas y ensayos sobre la aplicación. (10)
+	\item Corrección de errores y ajustes menores. (10)
+	\end{enumerate}
+\item Cierre del proyecto (110)
+	\begin{enumerate}
+	\item Elaboración de documentación. (20)
+	\item Elaboración de la memoria técnica del trabajo final. (40)
+	\item Correcciones sobre la memoria técnica del trabajo final (20) 
+	\item Elaboración de la presentación del proyecto final. (20)
+	\item Cierre del proyecto. (10)
 	\end{enumerate}
 \end{enumerate}
 
-Cantidad total de horas: (tantas h)
-
-Se recomienda que no haya ninguna tarea que lleve más de 40 h. 
-
-\end{consigna}
+Cantidad total de horas: (755)
+ 
+\vspace{600px}
 
 \section{10. Diagrama de Activity On Node}
 \label{sec:AoN}
